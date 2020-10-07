@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <modules>
+        <module>accounts-service</module>
+        <module>accounts-domain</module>
+        <module>accounts-data</module>
+    </modules>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.10.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <version>1.0.0</version>
+    <groupId>mvi.finance</groupId>
+    <artifactId>accounts-root</artifactId>
+    <name>accounts-root</name>
+    <description>Demo of an asset-management using REST and MS</description>
+    <packaging>pom</packaging>
+
+    <properties>
+        <java.version>11</java.version>
+        <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
+        <swagger.version>2.9.2</swagger.version>
+        <postgresql.version>42.2.15</postgresql.version>
+        <liquibase.version>4.1.0</liquibase.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--INTERNAL-->
+            <dependency>
+                <groupId>mvi.finance</groupId>
+                <artifactId>accounts-domain</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>mvi.finance</groupId>
+                <artifactId>accounts-data</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+
+            <!--            IMPORTS-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--DEPENDENCIES-->
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-streams</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-core</artifactId>
+                <version>${liquibase.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
+            </dependency>
+
+            <!--TEST-->
+            <!--            TODO reactivate cucumber and use it-->
+            <!--            <dependency>-->
+            <!--                <groupId>info.cukes</groupId>-->
+            <!--                <artifactId>cucumber-java</artifactId>-->
+            <!--                <version>1.2.6</version>-->
+            <!--                <scope>test</scope>-->
+            <!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>info.cukes</groupId>-->
+            <!--                <artifactId>cucumber-junit</artifactId>-->
+            <!--                <version>1.2.6</version>-->
+            <!--                <scope>test</scope>-->
+            <!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>info.cukes</groupId>-->
+            <!--                <artifactId>cucumber-spring</artifactId>-->
+            <!--                <version>1.2.6</version>-->
+            <!--                <scope>test</scope>-->
+            <!--            </dependency>-->
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>1.4.200</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

@@ -1,0 +1,15 @@
+package mvi.accounts.data.config;
+
+import mvi.accounts.data.GetAccountData;
+import mvi.accounts.data.entities.Account;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
+@Configuration
+@EntityScan(basePackageClasses = Account.class)
+@EnableJpaRepositories(basePackages = {"mvi.accounts.data.dao"})
+@ComponentScan(basePackageClasses = GetAccountData.class)
+public class PersistenceConfig {
+}
